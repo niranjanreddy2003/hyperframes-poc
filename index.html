@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#101210}
+#root{width:100%;height:100%;position:relative;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Inter,system-ui,sans-serif;color:#F2F1EC}
+.clip{position:absolute;inset:0;display:flex;align-items:center;background:#101210}
+.wrap{width:100%;padding:0 160px;display:grid;grid-template-columns:1fr 520px;gap:120px;align-items:center}
+.kicker{font-size:22px;letter-spacing:.35em;color:#9BA29B;margin-bottom:40px}
+h2{font-size:104px;font-weight:600;letter-spacing:-.04em;line-height:1.0}
+h2 span{color:#B8C9B0}
+.sub{font-size:32px;color:#9BA29B;margin-top:32px;line-height:1.45;max-width:640px}
+.iconbox{width:520px;height:520px;border-radius:28px;background:#1A1D1A;border:1px solid #2A2E2A;display:flex;align-items:center;justify-content:center}
+.iconbox svg{width:200px;height:200px;stroke:#C9D6C2;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.topbar{position:absolute;top:56px;left:160px;right:160px;display:flex;justify-content:space-between;font-size:20px;letter-spacing:.3em;color:#6B716B}
+.progress{position:absolute;bottom:64px;left:160px;right:160px;height:2px;background:#262926}
+#barfill{height:100%;background:#C9D6C2;transform-origin:left;width:100%}
+.count-big{position:absolute;right:120px;bottom:40px;font-size:200px;font-weight:600;color:#1E211E;letter-spacing:-.05em}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1920" data-height="1080">
+<div class="topbar"><span>GIANT PANDA</span><span>FIVE FACTS</span></div>
+<div id="scene-1" class="clip" data-start="0" data-duration="6"><div class="wrap"><div><div class="kicker">01 / BAMBOO</div><h2>Eats <span>38 kilos</span> a day.</h2><p class="sub">Almost all food is bamboo. Eats for 14 hours.</p></div><div class="iconbox"><svg viewBox="0 0 24 24"><path d="M12 22V8"/><path d="M12 8C12 4 9 2 5 2c0 4 3 6 7 6z"/><path d="M12 12c0-4 3-6 7-6 0 4-3 6-7 6z"/><path d="M12 16c0-4-3-6-7-6 0 4 3 6 7 6z"/></svg></div></div><div class="count-big">01</div><audio id="a1" data-start="0" data-duration="6" src="assets/panda1.wav"></audio></div>
+<div id="scene-2" class="clip" data-start="6" data-duration="6"><div class="wrap"><div><div class="kicker">02 / BIRTH</div><h2>Born at <span>100 grams.</span></h2><p class="sub">Pink and blind. Smaller than your phone.</p></div><div class="iconbox"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div></div><div class="count-big">02</div><audio id="a2" data-start="6" data-duration="6" src="assets/panda2.wav"></audio></div>
+<div id="scene-3" class="clip" data-start="12" data-duration="6"><div class="wrap"><div><div class="kicker">03 / GRIP</div><h2>A hidden <span>sixth finger.</span></h2><p class="sub">A wrist bone that holds bamboo tight.</p></div><div class="iconbox"><svg viewBox="0 0 24 24"><path d="M7 21v-8l-3-3 3-3v-2a1 1 0 011-1h6a1 1 0 011 1v9"/><path d="M7 13h8a4 4 0 014 4v2H7z"/></svg></div></div><div class="count-big">03</div><audio id="a3" data-start="12" data-duration="6" src="assets/panda3.wav"></audio></div>
+<div id="scene-4" class="clip" data-start="18" data-duration="6"><div class="wrap"><div><div class="kicker">04 / SKILL</div><h2>Climbs. <span>Swims.</span></h2><p class="sub">Looks slow. Moves fast in trees and water.</p></div><div class="iconbox"><svg viewBox="0 0 24 24"><path d="M3 20l6-12 4 6 3-4 5 10z"/><circle cx="18" cy="5" r="1.6"/></svg></div></div><div class="count-big">04</div><audio id="a4" data-start="18" data-duration="6" src="assets/panda4.wav"></audio></div>
+<div id="scene-5" class="clip" data-start="24" data-duration="6"><div class="wrap"><div><div class="kicker">05 / DAILY</div><h2>Poops <span>40 times</span> a day.</h2><p class="sub">Bamboo passes fast. So they eat nonstop.</p></div><div class="iconbox"><svg viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M4 12a8 8 0 018-8"/><path d="M20 12a8 8 0 01-8 8"/></svg></div></div><div class="count-big">05</div><audio id="a5" data-start="24" data-duration="6" src="assets/panda5.wav"></audio></div>
+<div class="progress"><div id="barfill"></div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+["#scene-1","#scene-2","#scene-3","#scene-4","#scene-5"].forEach((s,i)=>{
+  const t=i*6;
+  tl.fromTo(s+" .wrap",{opacity:0,x:60},{opacity:1,x:0,duration:.7,ease:"power3.out"},t+.1);
+  tl.fromTo(s+" .iconbox",{opacity:0,scale:.94},{opacity:1,scale:1,duration:.7,ease:"power3.out"},t+.25);
+});
+tl.fromTo("#barfill",{scaleX:0},{scaleX:1,duration:30,ease:"none"},0);
+window.__timelines["main"]=tl; tl.seek(0);
+</script>
+</body>
+</html>
